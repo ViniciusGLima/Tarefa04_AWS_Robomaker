@@ -1,16 +1,16 @@
 import rospy
-from geometry_msgs.msg import Twist
+from std_msgs.msg import String
 
 
-rospy.init_node('cmd_node')
+rospy.init_node('teste1')
 
 def timerCallBack(event):
-        msg = Twist()
-        msg.linear.x = 1.0
+        msg = String()
+        msg.data = '34784'
         pub.publish(msg)
         
         
-pub = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
-timer = rospy.Timer(rospy.Duration(0.05), timerCallBack)
+pub = rospy.Publisher('/topic1', String, queue_size=1)
+timer = rospy.Timer(rospy.Duration(0.1), timerCallBack)
 
 rospy.spin()
